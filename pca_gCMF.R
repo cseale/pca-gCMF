@@ -146,7 +146,7 @@ K=2
 D=as.numeric(countList)
 opts <- getCMFopts()
 opts$iter.max <- 10 # Less iterations for faster computation
-model <- CMF(train,inds,K,likelihood,D,test=test,opts=opts)
+model <- CMF(train,inds,K,likelihood,D,opts=opts)
 
 outm <- predictCMF(test, model)
 
@@ -156,8 +156,8 @@ temp_testerr1=model$errors[1,1]
 temp_results=outm$out[[1]]
 
 
-for (i in 1:1000) {
-	model <- CMF(train,inds,K,likelihood,D,test=test,opts=opts)
+for (i in 1:10) {
+	model <- CMF(train,inds,K,likelihood,D,opts=opts)
 	newmodelError=model$errors[1,1]
 	if (newmodelError < temp_testerr1)
 	{
